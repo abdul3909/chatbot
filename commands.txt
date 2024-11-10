@@ -1,0 +1,14 @@
+1. Total Orders Intent
+"How many orders did we place last month?"
+"Give me the total count of orders created in Q1."
+"What's the total number of orders we have this fiscal year?"
+2. Highest Spending Quarter Intent
+"Which quarter had the maximum expenditure?"
+"In which quarter did we spend the most?"
+"Show me the quarter with the highest expenses."
+3. Frequently Ordered Items Intent
+"List the top products that were ordered frequently."
+"What items are most commonly purchased?"
+"Show me the most frequently bought items."
+4. Fallback Handling
+"Can you tell me the breakdown of each department's monthly spending?"

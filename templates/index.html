@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Procurement Chat Assistant</title>
+    <style>
+        /* Basic styling for chat interface */
+        body { font-family: Arial, sans-serif; background-color: #f2f2f2; }
+        .chat-container { max-width: 500px; margin: auto; padding-top: 50px; }
+        .chatbox { background-color: white; padding: 20px; border-radius: 5px; }
+        .messages { height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; }
+        .user-message { text-align: right; color: blue; margin-bottom: 10px; }
+        .bot-message { text-align: left; color: green; margin-bottom: 10px; }
+        input[type=text] { width: 80%; padding: 10px; }
+        input[type=submit] { padding: 10px; }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chatbox">
+            <h2>Procurement Chat Assistant</h2>
+            <div class="messages" id="messages"></div>
+            <form id="chat-form">
+                <input type="text" id="message" placeholder="Type your message here..." autocomplete="off" />
+                <input type="submit" value="Send" />
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('chat-form');
+        const messages = document.getElementById('messages');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userMessage = document.getElementById('message').value;
+            if (userMessage.trim() === '') return;
+
+            // Display user message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'user-message';
+            userDiv.textContent = userMessage;
+            messages.appendChild(userDiv);
+
+            // Scroll to bottom
+            messages.scrollTop = messages.scrollHeight;
+
+            // Clear input
+            document.getElementById('message').value = '';
+
+            // Send message to server
+            fetch('/get_response', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'msg=' + encodeURIComponent(userMessage)
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Display bot response
+                const botDiv = document.createElement('div');
+                botDiv.className = 'bot-message';
+                botDiv.textContent = data;
+                messages.appendChild(botDiv);
+
+                // Scroll to bottom
+                messages.scrollTop = messages.scrollHeight;
+            });
+        });
+    </script>
+</body>
+</html>

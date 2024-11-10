@@ -21,7 +21,7 @@ This project is a prototype chatbot designed for procurement professionals. It u
   - Analysis of frequently ordered line items.
 
 ## Dataset
-This chatbot uses a dataset of large purchases made by the State of California, which is available on [Kaggle](https://www.kaggle.com/). The dataset includes fields like Purchase Date, Total Price, Item Name, Department, etc., and is loaded into MongoDB for efficient data querying.
+This chatbot uses a dataset of large purchases made by the State of California, which is available on [Kaggle]([https://www.kaggle.com/](https://www.kaggle.com/datasets/sohier/large-purchases-by-the-state-of-ca). The dataset includes fields like Purchase Date, Total Price, Item Name, Department, etc., and is loaded into MongoDB for efficient data querying.
 
 ## Setup
 
